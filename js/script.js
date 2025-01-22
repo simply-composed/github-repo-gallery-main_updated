@@ -32,7 +32,7 @@ const gitUserInfo = async function () {
   };
 
   const gitRepos = async function () {
-    const fetchRepos = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+    const fetchRepos = await fetch(`https://api.github.com/users/${simply-composed}/repos?sort=updated&per_page=100`);
     const repoData = await fetchRepos.json();
     displayRepos(repoData);
 };
@@ -54,7 +54,7 @@ repoList.addEventListener("click", function (e) {
 });
 
 const getRepoInfo = async function (repoName) {
-  const fetchInfo = await fetch('https://api.github.com/repos/${username}/${repoName}');
+  const fetchInfo = await fetch('https://api.github.com/repos/${simply-composed}/${repoName}');
   const repoInfo = await fetchInfo.json();
   //console.log(repoInfo);//
 
