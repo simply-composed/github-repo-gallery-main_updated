@@ -6,7 +6,7 @@ const repoData = document.querySelector(".repo-data");
 
 
 const gitUserInfo = async function () {
-    const userInfo = await fetch(`https://api.github.com/users/${simply-composed}`);
+    const userInfo = await fetch(`https://api.github.com/users/${username}`);
     const data = await userInfo.json();
     displayUserInfo(data);
   };
@@ -32,7 +32,7 @@ const gitUserInfo = async function () {
   };
 
   const gitRepos = async function () {
-    const fetchRepos = await fetch(`https://api.github.com/users/${simply-composed}/repos?sort=updated&per_page=100`);
+    const fetchRepos = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
     const repoData = await fetchRepos.json();
     displayRepos(repoData);
 };
