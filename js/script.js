@@ -54,9 +54,9 @@ repoList.addEventListener("click", function (e) {
 });
 
 const getRepoInfo = async function (repoName) {
-  const fetchInfo = await fetch('https://api.github.com/repos/${simply-composed}/${repoName}');
+  const fetchInfo = await fetch(`https://api.github.com/repos/${username}/${repoName}`);
   const repoInfo = await fetchInfo.json();
-  //console.log(repoInfo);//
+  console.log(repoInfo);
 
   const fetchLanguages = await fetch(repoInfo.languages_url);
   const languageData = await fetchLanguages.json();
@@ -66,17 +66,18 @@ const getRepoInfo = async function (repoName) {
   for (const language in languageData) {
     languages.push(language);
   }
+
   displayRepoInfo(repoInfo, languages);
+
 };
 
-const displayRepoInfl = function (repoInfo, languages) {
+const displayRepoInfo = function (repoInfo, languages) {
   repoData.innerHTML = "";
   repoData.classList.remove("hide");
   allReposContainer.classList.add("hide");
   const div = document.createElement("div");
-
   div.innerHTML = `
-<h3>Name: ${repoInfo.name}</h3>
+    <h3>Name: ${repoInfo.name}</h3>
     <p>Description: ${repoInfo.description}</p>
     <p>Default Branch: ${repoInfo.default_branch}</p>
     <p>Languages: ${languages.join(", ")}</p>
